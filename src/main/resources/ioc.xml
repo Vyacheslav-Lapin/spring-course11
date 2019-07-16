@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="ru.sbt.courses.spring.springcourse10.ioc.CountryImpl" id="country"
+        c:name="Russia"/>
+
+  <bean class="ru.sbt.courses.spring.springcourse10.ioc.CompanyImpl" id="company"
+        c:name="Cool Company"
+        c:country-ref="country"/>
+  <bean class="ru.sbt.courses.spring.springcourse10.ioc.EmployeeImpl" id="employee"
+        c:country-ref="country"
+        c:company-ref="company"
+        c:dob-ref="localDate"
+        c:name="Вася Пупкин"/>
+
+  <bean class="java.time.LocalDate" id="localDate"
+        factory-method="now"/>
+
+</beans>
