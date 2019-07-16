@@ -8,13 +8,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.sbt.courses.spring.springcourse10.Conf;
 
-//@ComponentScan()
+//@ContextConfiguration("classpath:ioc.xml")
+@ContextConfiguration(classes = Conf.class)
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration("classpath:ioc.xml")
+@ComponentScan(basePackages = "ru.sbt.courses.spring.springcourse10.ioc")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 class EmployeeImplTest {
 
@@ -24,7 +27,7 @@ class EmployeeImplTest {
   @DisplayName("getName TestConfig spring method works correctly")
   void getNameTestConfigspring() {
     assertThat(employee.getName())
-      .isEqualTo("Вася Пупкин");
+      .isEqualTo("Vasya Pupkin");
   }
 
   @Test
