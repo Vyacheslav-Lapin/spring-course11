@@ -10,7 +10,7 @@ public class MyService {
 
   @SneakyThrows
   @Contract(pure = true)
-  public final @NotNull String method(int x) {
+  public @NotNull String method(int x) {
     return Integer.toString(x);
   }
 
